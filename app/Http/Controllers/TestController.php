@@ -14,9 +14,6 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class TestController extends Controller
 {
-
-
-
 ///////////////////Import tests from excit////////////////////////////////////////////
 public function excel_import_view(Request $request){
     return view('import');
@@ -34,13 +31,19 @@ public function import(Request $request){
  }
  /////////////Vister Counter////////////////////////////////////////////
  public function vister_counter(Request $request){
-  
+  $session_id = session()->getId();
+ // $prev_session= DB::table('vister_counter')->where('session_id', '=',  $session_id  )->get();
+if(empty(DB::table('vister_counter')->where('session_id', '=',  $session_id  )->get()->count())){
     $data= DB::table('vister_counter')->insert([
+        'session_id' => $session_id,
         'user_name' => "user",//$request->group_name,
-        'join_time' => time(),
+        'join_time' => time()
          
     ]);
-
+}
+   
+    $visters =  DB::table('vister_counter')->get()->count();
+    echo json_encode($visters);
 
  }
 /////////////////////////////////////////////////////////

@@ -50,6 +50,5 @@ Route::get('/show_g_result',   [TestController::class,'show_g_result'])/* ->midd
 Route::get('/topics',   [TestController::class,'topics'])/* ->middleware('auth') */->name('topics');
 Route::get('/edit_dept',   [TestController::class,'edit_dept'])->middleware('auth')->name('edit_dept');
 Route::post('/edit_dept_action',   [TestController::class,'edit_dept_action'])->middleware('auth')->name('edit_dept_action');
-
-
 Route::get('/delete_g',   [TestController::class,'delete_g'])->middleware('auth')->name('delete_g');
+Route::get('/vister_counter',   [TestController::class,'vister_counter'])/* ->middleware('auth') */->name('vister_counter');
